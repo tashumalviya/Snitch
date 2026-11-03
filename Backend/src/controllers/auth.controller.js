@@ -3,6 +3,12 @@ import userModel from "../models/user.model.js";
 import jwt from "jsonwebtoken"
 import { config } from "../config/config.js";
 
+const cookieOptions = {
+    httpOnly: true,
+    secure: config.NODE_ENV === "production",
+    sameSite: "lax",
+    maxAge: 7 * 24 * 60 * 60 * 1000
+};
 
 async function sendTokenResponse(user, res, message) {
 
@@ -12,7 +18,7 @@ async function sendTokenResponse(user, res, message) {
         expiresIn: "7d"
     })
 
-    res.cookie("token", token)
+    res.cookie("token", token, cookieOptions)
 
     res.status(200).json({
         message,
@@ -105,8 +111,8 @@ export const googleCallback = async (req, res) => {
         expiresIn: "7d"
     })
 
-    res.cookie("token", token)
-
+    res.cookie("token", token, cookieOptions)
+    
     res.redirect("http://localhost:5173/")
 }
 
