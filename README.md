@@ -55,7 +55,3 @@ The goal of Snitch is to provide a convenient platform where users can buy and s
 **Tashu Malviya**
 
 GitHub: [@tashumalviya](https://github.com/tashumalviya)
-
----
-
-⭐ If you like this project, don't forget to give it a star!
